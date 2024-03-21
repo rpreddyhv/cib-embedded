@@ -1,0 +1,777 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>7.0</ProjectVersion>
+    <ToolchainName>com.Atmel.ARMGCC.CPP</ToolchainName>
+    <ProjectGuid>dce6c7e3-ee26-4d79-826b-08594b9ad897</ProjectGuid>
+    <avrdevice>ATSAM4LC4C</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>CPP</Language>
+    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AssemblyName>blink-led-sam4l-ek</AssemblyName>
+    <Name>blink-led-sam4l-ek</Name>
+    <RootNamespace>blink-led-sam4l-ek</RootNamespace>
+    <ToolchainFlavour>Latest</ToolchainFlavour>
+    <KeepTimersRunning>true</KeepTimersRunning>
+    <OverrideVtor>false</OverrideVtor>
+    <CacheFlash>true</CacheFlash>
+    <ProgFlashFromRam>true</ProgFlashFromRam>
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
+    <UncachedRange />
+    <preserveEEPROM>true</preserveEEPROM>
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
+    <BootSegment>2</BootSegment>
+    <ResetRule>0</ResetRule>
+    <eraseonlaunchrule>0</eraseonlaunchrule>
+    <EraseKey />
+    <AsfFrameworkConfig>
+      <framework-data xmlns="">
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.52.0" />
+        </dependencies>
+      </framework-data>
+    </AsfFrameworkConfig>
+    <avrtool>com.atmel.avrdbg.tool.samice</avrtool>
+    <avrtoolserialnumber>480018027</avrtoolserialnumber>
+    <avrdeviceexpectedsignature>0xAB0A09E0</avrdeviceexpectedsignature>
+    <com_atmel_avrdbg_tool_samice>
+      <ToolOptions>
+        <InterfaceProperties>
+          <SwdClock>4000000</SwdClock>
+        </InterfaceProperties>
+        <InterfaceName>SWD</InterfaceName>
+      </ToolOptions>
+      <ToolType>com.atmel.avrdbg.tool.samice</ToolType>
+      <ToolNumber>480018027</ToolNumber>
+      <ToolName>J-Link</ToolName>
+    </com_atmel_avrdbg_tool_samice>
+    <avrtoolinterface>SWD</avrtoolinterface>
+    <avrtoolinterfaceclock>4000000</avrtoolinterfaceclock>
+    <UseGdb>True</UseGdb>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <ArmGccCpp>
+        <armgcc.common.outputfiles.hex>True</armgcc.common.outputfiles.hex>
+        <armgcc.common.outputfiles.lss>True</armgcc.common.outputfiles.lss>
+        <armgcc.common.outputfiles.eep>True</armgcc.common.outputfiles.eep>
+        <armgcc.common.outputfiles.bin>True</armgcc.common.outputfiles.bin>
+        <armgcc.common.outputfiles.srec>True</armgcc.common.outputfiles.srec>
+        <armgcc.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>NDEBUG</Value>
+          </ListValues>
+        </armgcc.compiler.symbols.DefSymbols>
+        <armgcc.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
+            <Value>%24(PackRepoDir)\atmel\SAM4L_DFP\1.1.61\sam4l4\include</Value>
+          </ListValues>
+        </armgcc.compiler.directories.IncludePaths>
+        <armgcc.compiler.optimization.level>Optimize for size (-Os)</armgcc.compiler.optimization.level>
+        <armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
+        <armgcc.compiler.warnings.AllWarnings>True</armgcc.compiler.warnings.AllWarnings>
+        <armgcccpp.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>NDEBUG</Value>
+          </ListValues>
+        </armgcccpp.compiler.symbols.DefSymbols>
+        <armgcccpp.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
+            <Value>%24(PackRepoDir)\atmel\SAM4L_DFP\1.1.61\sam4l4\include</Value>
+          </ListValues>
+        </armgcccpp.compiler.directories.IncludePaths>
+        <armgcccpp.compiler.optimization.level>Optimize for size (-Os)</armgcccpp.compiler.optimization.level>
+        <armgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>
+        <armgcccpp.compiler.warnings.AllWarnings>True</armgcccpp.compiler.warnings.AllWarnings>
+        <armgcccpp.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+          </ListValues>
+        </armgcccpp.linker.libraries.Libraries>
+        <armgcccpp.linker.libraries.LibrarySearchPaths>
+          <ListValues>
+            <Value>%24(ProjectDir)\Device_Startup</Value>
+          </ListValues>
+        </armgcccpp.linker.libraries.LibrarySearchPaths>
+        <armgcccpp.linker.optimization.GarbageCollectUnusedSections>True</armgcccpp.linker.optimization.GarbageCollectUnusedSections>
+        <armgcccpp.linker.miscellaneous.LinkerFlags>-Tsam4lc4c_flash.ld</armgcccpp.linker.miscellaneous.LinkerFlags>
+        <armgcccpp.assembler.general.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
+            <Value>%24(PackRepoDir)\atmel\SAM4L_DFP\1.1.61\sam4l4\include</Value>
+          </ListValues>
+        </armgcccpp.assembler.general.IncludePaths>
+        <armgcccpp.preprocessingassembler.general.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
+            <Value>%24(PackRepoDir)\atmel\SAM4L_DFP\1.1.61\sam4l4\include</Value>
+          </ListValues>
+        </armgcccpp.preprocessingassembler.general.IncludePaths>
+      </ArmGccCpp>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <ArmGccCpp>
+        <armgcc.common.outputfiles.hex>True</armgcc.common.outputfiles.hex>
+        <armgcc.common.outputfiles.lss>True</armgcc.common.outputfiles.lss>
+        <armgcc.common.outputfiles.eep>True</armgcc.common.outputfiles.eep>
+        <armgcc.common.outputfiles.bin>True</armgcc.common.outputfiles.bin>
+        <armgcc.common.outputfiles.srec>True</armgcc.common.outputfiles.srec>
+        <armgcc.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>DEBUG</Value>
+          </ListValues>
+        </armgcc.compiler.symbols.DefSymbols>
+        <armgcc.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
+            <Value>%24(PackRepoDir)\atmel\SAM4L_DFP\1.1.61\sam4l4\include</Value>
+          </ListValues>
+        </armgcc.compiler.directories.IncludePaths>
+        <armgcc.compiler.optimization.level>Optimize debugging experience (-Og)</armgcc.compiler.optimization.level>
+        <armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
+        <armgcc.compiler.optimization.DebugLevel>Maximum (-g3)</armgcc.compiler.optimization.DebugLevel>
+        <armgcc.compiler.warnings.AllWarnings>True</armgcc.compiler.warnings.AllWarnings>
+        <armgcccpp.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>DEBUG</Value>
+          </ListValues>
+        </armgcccpp.compiler.symbols.DefSymbols>
+        <armgcccpp.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
+            <Value>%24(PackRepoDir)\atmel\SAM4L_DFP\1.1.61\sam4l4\include</Value>
+            <Value>../src</Value>
+            <Value>../lib</Value>
+          </ListValues>
+        </armgcccpp.compiler.directories.IncludePaths>
+        <armgcccpp.compiler.optimization.level>Optimize debugging experience (-Og)</armgcccpp.compiler.optimization.level>
+        <armgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>
+        <armgcccpp.compiler.optimization.DebugLevel>Maximum (-g3)</armgcccpp.compiler.optimization.DebugLevel>
+        <armgcccpp.compiler.warnings.AllWarnings>True</armgcccpp.compiler.warnings.AllWarnings>
+        <armgcccpp.compiler.miscellaneous.OtherFlags>-std=c++20 -DSIMULATE_FREESTANDING</armgcccpp.compiler.miscellaneous.OtherFlags>
+        <armgcccpp.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+          </ListValues>
+        </armgcccpp.linker.libraries.Libraries>
+        <armgcccpp.linker.libraries.LibrarySearchPaths>
+          <ListValues>
+            <Value>%24(ProjectDir)\Device_Startup</Value>
+          </ListValues>
+        </armgcccpp.linker.libraries.LibrarySearchPaths>
+        <armgcccpp.linker.optimization.GarbageCollectUnusedSections>True</armgcccpp.linker.optimization.GarbageCollectUnusedSections>
+        <armgcccpp.linker.memorysettings.ExternalRAM />
+        <armgcccpp.linker.miscellaneous.LinkerFlags>-Tsam4lc4c_flash.ld</armgcccpp.linker.miscellaneous.LinkerFlags>
+        <armgcccpp.assembler.general.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
+            <Value>%24(PackRepoDir)\atmel\SAM4L_DFP\1.1.61\sam4l4\include</Value>
+          </ListValues>
+        </armgcccpp.assembler.general.IncludePaths>
+        <armgcccpp.assembler.debugging.DebugLevel>Default (-g)</armgcccpp.assembler.debugging.DebugLevel>
+        <armgcccpp.preprocessingassembler.general.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
+            <Value>%24(PackRepoDir)\atmel\SAM4L_DFP\1.1.61\sam4l4\include</Value>
+          </ListValues>
+        </armgcccpp.preprocessingassembler.general.IncludePaths>
+        <armgcccpp.preprocessingassembler.debugging.DebugLevel>Default (-Wa,-g)</armgcccpp.preprocessingassembler.debugging.DebugLevel>
+      </ArmGccCpp>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Device_Startup\startup_sam4l.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Device_Startup\system_sam4l.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\algorithm.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\bind.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\config.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\mpl_common.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\mp_append.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\mp_copy_if.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\mp_count.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\mp_defer.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\mp_fold.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\mp_front.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\mp_is_list.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\mp_is_value_list.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\mp_list.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\mp_list_v.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\mp_map_find.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\mp_min_element.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\mp_plus.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\mp_remove_if.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\mp_rename.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\mp_value.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\mp_void.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\detail\mp_with_index.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\function.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\integer_sequence.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\integral.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\list.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\map.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\mpl.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\mpl_list.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\mpl_tuple.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\set.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\tuple.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\utility.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\boost\mp11\version.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\cib\builder_meta.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\cib\built.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\cib\callback.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\cib\cib.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\cib\config.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\cib\detail\components.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\cib\detail\conditional.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\cib\detail\config_details.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\cib\detail\config_item.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\cib\detail\exports.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\cib\detail\extend.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\cib\detail\nexus_details.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\cib\func_decl.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\cib\nexus.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\cib\top.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\conc\concepts.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\conc\concurrency.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\flow\builder.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\flow\common.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\flow\detail\par.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\flow\detail\seq.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\flow\detail\walk.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\flow\flow.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\flow\graphviz_builder.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\flow\graph_builder.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\flow\impl.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\flow\milestone.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\flow\run.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\fmt\args.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\fmt\chrono.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\fmt\color.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\fmt\compile.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\fmt\core.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\fmt\format-inl.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\fmt\format.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\fmt\os.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\fmt\ostream.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\fmt\printf.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\fmt\ranges.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\fmt\std.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\fmt\xchar.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\interrupt\concepts.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\interrupt\config.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\interrupt\dynamic_controller.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\interrupt\fwd.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\interrupt\hal.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\interrupt\impl.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\interrupt\manager.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\interrupt\policies.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\log\catalog\catalog.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\log\catalog\mipi_encoder.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\log\fmt\logger.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\log\level.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\log\log.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\lookup\detail\select.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\lookup\direct_array_lookup.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\lookup\entry.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\lookup\fast_hash_lookup.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\lookup\hash_ops.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\lookup\input.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\lookup\linear_search_lookup.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\lookup\lookup.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\lookup\strategies.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\lookup\strategy\arc_cpu.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\lookup\strategy_failed.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\match\and.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\match\bin_op.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\match\concepts.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\match\constant.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\match\cost.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\match\implies.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\match\negate.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\match\not.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\match\ops.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\match\or.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\match\predicate.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\match\simplify.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\match\sum_of_products.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\msg\callback.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\msg\detail\indexed_builder_common.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\msg\detail\indexed_handler_common.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\msg\detail\rle_codec.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\msg\detail\separate_sum_terms.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\msg\field.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\msg\field_matchers.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\msg\handler.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\msg\handler_builder.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\msg\handler_interface.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\msg\indexed_builder.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\msg\indexed_handler.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\msg\indexed_service.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\msg\message.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\msg\rle_indexed_builder.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\msg\rle_indexed_handler.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\msg\rle_indexed_service.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\msg\service.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\sc\format.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\sc\fwd.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\sc\lazy_string_format.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\sc\string_constant.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\seq\builder.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\seq\impl.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\seq\step.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\bit.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\bitset.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\cached.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\compiler.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\concepts.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\ct_conversions.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\ct_string.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\cx_map.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\cx_multimap.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\cx_queue.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\cx_set.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\cx_vector.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\for_each_n_args.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\functional.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\function_traits.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\intrusive_forward_list.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\intrusive_list.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\iterator.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\memory.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\optional.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\panic.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\priority.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\span.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\tuple.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\tuple_algorithms.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\tuple_destructure.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\type_traits.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\stdx\utility.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="main.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\apps\common\button\button.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\apps\common\led\led.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\apps\user\flow_names.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\apps\user\input_button.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\apps\user\status_led.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\hal\driver\gpio\gpio.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Device_Startup\" />
+    <Folder Include="lib" />
+    <Folder Include="lib\boost\" />
+    <Folder Include="lib\boost\mp11\" />
+    <Folder Include="lib\boost\mp11\detail\" />
+    <Folder Include="lib\cib\" />
+    <Folder Include="lib\cib\detail\" />
+    <Folder Include="lib\conc\" />
+    <Folder Include="lib\flow\" />
+    <Folder Include="lib\flow\detail\" />
+    <Folder Include="lib\fmt\" />
+    <Folder Include="lib\interrupt\" />
+    <Folder Include="lib\log\" />
+    <Folder Include="lib\log\catalog\" />
+    <Folder Include="lib\log\fmt\" />
+    <Folder Include="lib\lookup\" />
+    <Folder Include="lib\lookup\detail\" />
+    <Folder Include="lib\lookup\strategy\" />
+    <Folder Include="lib\match\" />
+    <Folder Include="lib\msg\" />
+    <Folder Include="lib\msg\detail\" />
+    <Folder Include="lib\sc\" />
+    <Folder Include="lib\seq\" />
+    <Folder Include="lib\stdx\" />
+    <Folder Include="config" />
+    <Folder Include="src" />
+    <Folder Include="src\apps\common" />
+    <Folder Include="src\apps\common\button\" />
+    <Folder Include="src\apps\common\led\" />
+    <Folder Include="src\apps\util" />
+    <Folder Include="src\apps\user" />
+    <Folder Include="src\hal\driver\" />
+    <Folder Include="src\hal\driver\gpio\" />
+    <Folder Include="src\hal\register" />
+    <Folder Include="src\hal" />
+    <Folder Include="src\apps" />
+    <Folder Include="src\lib" />
+    <Folder Include="src\lib\regops" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Device_Startup\sam4lc4c_flash.ld">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="Device_Startup\sam4lc4c_sram.ld">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="lib\log\README.md">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="lib\sc\README.md">
+      <SubType>compile</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+</Project>
