@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+        "array": "cpp",
+        "atomic": "cpp",
+        "cwchar": "cpp",
+        "string": "cpp",
+        "exception": "cpp",
+        "random": "cpp",
+        "initializer_list": "cpp",
+        "iosfwd": "cpp",
+        "new": "cpp",
+        "stdexcept": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp"
+    }
+}
