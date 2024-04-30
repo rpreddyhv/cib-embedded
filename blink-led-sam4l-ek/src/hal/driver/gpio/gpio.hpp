@@ -45,33 +45,53 @@ namespace hal::driver::gpio
 		constexpr static auto portIndex = (0x200 * port);
 
 		constexpr static auto portOffset = GPIO_ADDR | portIndex;
-		constexpr static auto GPER = lib::mmio::Register<portOffset | GPIO_GPER_OFFSET>{};
+		using GPER = lib::mmio::Register<portOffset | GPIO_GPER_OFFSET>;
 		// constexpr static auto GPER = portOffset | GPIO_GPER_OFFSET;
-		constexpr static auto ODER = portOffset | GPIO_ODER_OFFSET;
-		constexpr static auto OVR = portOffset | GPIO_OVR_OFFSET;
-		constexpr static auto PVR = portOffset | GPIO_PVR_OFFSET;
+		constexpr static auto ODER = lib::mmio::Register<portOffset | GPIO_ODER_OFFSET>{};
+		// constexpr static auto ODER = portOffset | GPIO_ODER_OFFSET;
+		using OVR = lib::mmio::Register<portOffset | GPIO_OVR_OFFSET>;
+		// constexpr static auto OVR = portOffset | GPIO_OVR_OFFSET;
+		constexpr static auto PVR = lib::mmio::Register<portOffset | GPIO_PVR_OFFSET>{};
+		// constexpr static auto PVR = portOffset | GPIO_PVR_OFFSET;
 		constexpr static auto PUER = portOffset | GPIO_PUER_OFFSET;
 		constexpr static auto PDER = portOffset | GPIO_PDER_OFFSET;
 		constexpr static auto IER = portOffset | GPIO_IER_OFFSET;
 		constexpr static auto STER = portOffset | GPIO_STER_OFFSET;
 
+		constexpr static auto GPER_BIT = lib::mmio::Field<GPER, pin, pin>{};
+		constexpr static auto OVR_BIT = lib::mmio::Field<OVR, pin, pin>{};
+
 	public:
 		constexpr static auto init() -> void
 		{
-			auto const gper = lib::mmio::read(GPER);
-			auto const updateGper = gper | (1 << pin);
-			lib::mmio::write(GPER, updateGper);
+			lib::mmio::set(GPER_BIT);
+			// auto const gper = lib::mmio::read(GPER);
+			// auto const updateGper = gper | (1 << pin);
+			// lib::mmio::write(GPER, updateGper);
+
 			//*((unsigned int *)GPER) |= (1 << pin);
 
 			if constexpr (DirectionT == Direction::OUTPUT)
 			{
-				*((unsigned int *)ODER) |= (1 << pin);
-				*((unsigned int *)OVR) |= (1 << pin);
+				auto const oder = lib::mmio::read(ODER);
+				auto const updateOder = oder | (1 << pin);
+				lib::mmio::write(ODER, updateOder);
+				// *((unsigned int *)ODER) |= (1 << pin);
+
+				lib::mmio::set(OVR_BIT);
+				// auto const ovr = lib::mmio::read(OVR);
+				// auto const updateOvr = ovr | (1 << pin);
+				// lib::mmio::write(OVR, updateOvr);
+				// *((unsigned int *)OVR) |= (1 << pin);
 			}
 
 			if constexpr (DirectionT == Direction::INPUT)
 			{
-				*((unsigned int *)ODER) &= ~(1 << pin);
+				auto const oder = lib::mmio::read(ODER);
+				auto const updateOder = oder & ~(1 << pin);
+				lib::mmio::write(ODER, updateOder);
+				// *((unsigned int *)ODER) &= ~(1 << pin);
+
 				*((unsigned int *)STER) |= (1 << pin);
 
 				// if constexpr (PullUpDownT == PULL_DOWN) {
@@ -91,17 +111,26 @@ namespace hal::driver::gpio
 
 		constexpr static auto get() -> bool
 		{
-			return (*(unsigned int *)PVR) & (1 << pin);
+			return lib::mmio::read(PVR);
+			// return (*(unsigned int *)PVR) & (1 << pin);
 		}
 
 		constexpr static auto set() -> void
 		{
-			(*(unsigned int *)OVR) |= (1 << pin);
+			lib::mmio::set(OVR_BIT);
+			// auto const ovr = lib::mmio::read(OVR);
+			// auto const updateOvr = ovr | (1 << pin);
+			// lib::mmio::write(OVR, updateOvr);
+			// (*(unsigned int *)OVR) |= (1 << pin);
 		}
 
 		constexpr static auto clear() -> void
 		{
-			(*(unsigned int *)OVR) &= ~(1 << pin);
+			lib::mmio::clear(OVR_BIT);
+			// auto const ovr = lib::mmio::read(OVR);
+			// auto const updateOvr = ovr & ~(1 << pin);
+			// lib::mmio::write(OVR, updateOvr);
+			// (*(unsigned int *)OVR) &= ~(1 << pin);
 		}
 	};
 }

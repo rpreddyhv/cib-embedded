@@ -9,14 +9,19 @@ namespace lib::mmio
     {
         using DataType = DataTypeT;
         using Register = RegisterT;
-        constexpr static auto value = DataType{};
 
-        constexpr auto operator()(DataType const &value)
+        constexpr auto operator()(DataType const &toUpdate)
         {
-            return mask & (value << Msb);
+            value = mask & (toUpdate << Lsb);
+        }
+
+        constexpr static auto operator()()
+        {
+            return mask;
         }
 
     private:
-        constexpr static DataType mask = ((1 << Msb) - 1) & ((1 << Lsb) - 1);
+        constexpr static DataType mask = ((1 << (Msb + 1)) - 1) & ~((1 << Lsb) - 1);
+        DataType value{};
     };
 }
